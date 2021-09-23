@@ -19,7 +19,15 @@ namespace Buisness.Concrete
         public void Add(Car car)
         {
             _carDal.Add(car);
-            Console.WriteLine(car.CarId + "=No Idli araba eklendi");
+            if (car.CarName.Length>2 && car.DailyPrice>0)
+            {
+                Console.WriteLine(car.CarId + "=No Idli araba eklendi");
+            }
+
+            else
+            {
+                Console.WriteLine(car.CarId+"=no Idlı araba eklenemedı");
+            }
         }
 
         public void Delete(Car car)
@@ -34,12 +42,9 @@ namespace Buisness.Concrete
             return _carDal.GetAll();
         }
 
-
         public List<Car> GetById(int carId)
         {
-            return _carDal.GetById(carId);
-
-
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)
