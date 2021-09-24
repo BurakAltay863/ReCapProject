@@ -44,7 +44,7 @@ namespace Buisness.Concrete
 
         public List<Car> GetById(int carId)
         {
-            throw new NotImplementedException();
+            return _carDal.GetAll(c => c.CarId == carId);
         }
 
         public void Update(Car car)
