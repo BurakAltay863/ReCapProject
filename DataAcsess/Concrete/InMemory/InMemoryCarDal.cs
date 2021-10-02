@@ -1,12 +1,13 @@
-﻿using DataAcsess.Abstract;
+﻿using DataAccsess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace DataAcsess.Concrete.InMemory
+namespace DataAccsess.Concrete.InMemory
 {
 
     public class InMemoryCarDal : ICarDal
@@ -50,6 +51,11 @@ namespace DataAcsess.Concrete.InMemory
         public List<Car> GetById(int carId)
         {
             return _cars.Where(c => c.CarId == carId).ToList();
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
         }
 
         public void Update(Car car)

@@ -1,6 +1,7 @@
-﻿using Buisness.Concrete;
-using DataAcsess.Concrete.EntityFramwork;
-using DataAcsess.Concrete.InMemory;
+﻿using Business.Concrete;
+using DataAccsess.Abstract;
+using DataAccsess.Concrete.EntityFramwork;
+using DataAccsess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
 
@@ -10,35 +11,69 @@ namespace ConsoleIU
     {
         static void Main(string[] args)
         {
+            //Update();
+
+            //Add();
+
+            //Delate();
+
+            //GetAll();
+
+            //GetById();
+
+        }
+
+        private static void GetById()
+        {
             CarManeger carManeger = new CarManeger(new EfCarDal());
 
-            //foreach (var car in carManeger.GetAll())
-            //{
-            //    Console.WriteLine("ArabaIdsı:" + car.CarId + " Açıklama:" + car.Description);
+            foreach (var c in carManeger.GetById(3))
+            {
+                Console.WriteLine(c.CarName);
+            }
+        }
 
-                
-            //}
-            Car car1 = new Car();
-            car1.CarName = "Massarati";
-            car1.DailyPrice = 25;
-            car1.CarId = 1;
-            car1.BrandId = 1;
-            car1.ColorId = 1;
-            car1.Description = "pahakı arac";
-            car1.ModelYear = "2021 ";
+        private static void GetAll()
+        {
+            CarManeger carManeger = new CarManeger(new EfCarDal());
 
-            Car car2 = new Car();
-            car2.CarName = "Fiat";
-            car2.DailyPrice = 20;
-            car2.CarId = 2;
-            car2.BrandId = 2;
-            car2.ColorId = 3;
-            car2.Description = "Ucuz arac";
-            car2.ModelYear = "2000";
-            carManeger.Add(car1);
-            carManeger.Add(car2);
-            
-            
+            foreach (var c in carManeger.GetAll())
+            {
+                Console.WriteLine(c.CarName);
+            }
+        }
+
+        private static void Delate()
+        {
+            Car car = new Car { CarId = 2 };
+            CarManeger carManeger = new CarManeger(new EfCarDal());
+            carManeger.Delete(car);
+            foreach (var c in carManeger.GetCarDetails())
+            {
+                Console.WriteLine(c.CarName + " " + c.BrandName + " " + c.ColorName + " " + c.DailyPrice + " " + c.ModelYear);
+            }
+        }
+
+        private static void Add()
+        {
+            Car car = new Car { BrandId = 1, CarName = "asd", ColorId = 1, DailyPrice = 500, Description = "hasarlı", ModelYear = "2012" };
+            CarManeger carManeger = new CarManeger(new EfCarDal());
+            carManeger.Add(car);
+            foreach (var c in carManeger.GetCarDetails())
+            {
+                Console.WriteLine(c.CarName + " " + c.BrandName + " " + c.ColorName + " " + c.DailyPrice + " " + c.ModelYear);
+            }
+        }
+
+        private static void Update()
+        {
+            Car car = new Car { CarId = 2, BrandId = 1, CarName = "kkd", ColorId = 1, DailyPrice = 200, Description = "temiz", ModelYear = "2012" };
+            CarManeger carManeger = new CarManeger(new EfCarDal());
+            carManeger.Update(car);
+            foreach (var c in carManeger.GetCarDetails())
+            {
+                Console.WriteLine(c.CarName + " " + c.BrandName + " " + c.ColorName + " " + c.DailyPrice + " " + c.ModelYear);
+            }
         }
     }
 }
