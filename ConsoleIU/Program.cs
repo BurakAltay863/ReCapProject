@@ -27,10 +27,8 @@ namespace ConsoleIU
         {
             CarManeger carManeger = new CarManeger(new EfCarDal());
 
-            foreach (var c in carManeger.GetById(3))
-            {
-                Console.WriteLine(c.CarName);
-            }
+            carManeger.GetById(3);
+
         }
 
         private static void GetAll()
