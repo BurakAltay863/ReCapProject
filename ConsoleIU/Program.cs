@@ -13,7 +13,7 @@ namespace ConsoleIU
         {
             //Update();
 
-            //Add();
+            Add();
 
             //Delate();
 
@@ -70,7 +70,7 @@ namespace ConsoleIU
             carManeger.Update(car);
             foreach (var c in carManeger.GetCarDetails())
             {
-                Console.WriteLine(c.CarName + " " + c.BrandName + " " + c.ColorName + " " + c.DailyPrice + " " + c.ModelYear);
+                Console.WriteLine(c.CarName + " " + c.BrandName + " " + c.ColorName + " " + c.DailyPrice + " " + c.ModelYear+c.ModelYear);
             }
         }
     }
