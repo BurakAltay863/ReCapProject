@@ -19,9 +19,11 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            _carDal.Add(car);
+           
             if (car.CarName.Length>2 && car.DailyPrice>0)
             {
+               
+                _carDal.Add(car);
                 Console.WriteLine(car.CarId + "=No Idli araba eklendi");
             }
 
@@ -51,6 +53,17 @@ namespace Business.Concrete
         public List<CarDetailDto> GetCarDetails()
         {
             return _carDal.GetCarDetails();
+        }
+
+        public List<Car> GetCarsByBrandId(int id)
+        {
+            return _carDal.GetAll(c => c.BrandId == id);
+        }
+
+        public List<Car> GetCarsByColorId(int id)
+        {
+            return _carDal.GetAll(c => c.ColorId == id);
+
         }
 
         public void Update(Car car)

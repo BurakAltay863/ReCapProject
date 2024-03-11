@@ -13,11 +13,11 @@ namespace ConsoleIU
         {
             //Update();
 
-            Add();
+            //Add();
 
             //Delate();
 
-            //GetAll();
+            GetAll();
 
             //GetById();
 
@@ -27,7 +27,7 @@ namespace ConsoleIU
         {
             CarManeger carManeger = new CarManeger(new EfCarDal());
 
-            carManeger.GetById(3);
+            carManeger.GetById(8);
 
         }
 
@@ -37,7 +37,7 @@ namespace ConsoleIU
 
             foreach (var c in carManeger.GetAll())
             {
-                Console.WriteLine(c.CarName);
+                Console.WriteLine(c.CarName + " " + c.BrandId + " " + c.ColorId + " " + c.DailyPrice + " " + c.ModelYear);
             }
         }
 
@@ -54,13 +54,10 @@ namespace ConsoleIU
 
         private static void Add()
         {
-            Car car = new Car { BrandId = 1, CarName = "asd", ColorId = 1, DailyPrice = 500, Description = "hasarlı", ModelYear = "2012" };
+            Car car = new Car { BrandId = 1, CarName = "Deneme", ColorId = 1, DailyPrice = 44, Description = "HASARSIZ", ModelYear = "2023" };
             CarManeger carManeger = new CarManeger(new EfCarDal());
             carManeger.Add(car);
-            foreach (var c in carManeger.GetCarDetails())
-            {
-                Console.WriteLine(c.CarName + " " + c.BrandName + " " + c.ColorName + " " + c.DailyPrice + " " + c.ModelYear);
-            }
+            //GetAll();
         }
 
         private static void Update()
